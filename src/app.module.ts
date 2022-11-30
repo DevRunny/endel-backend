@@ -6,6 +6,8 @@ import {AppController} from "./app.controller";
 import {MessengersModel} from "./messengers/messengers.model";
 import {getEnvPath} from "./common/helper/env.helper";
 import {PointsModel} from "./points/points.model";
+import {MessengersModule} from "./messengers/messengers.module";
+import {PointsModule} from "./points/points.module";
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -27,6 +29,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       models: [MessengersModel, PointsModel],
       autoLoadModels: true,
     }),
+      MessengersModule, PointsModule
   ],
 })
 export class AppModule {}

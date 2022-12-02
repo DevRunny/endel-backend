@@ -9,12 +9,18 @@ import {PointsModel} from "./points/points.model";
 import {MessengersModule} from "./messengers/messengers.module";
 import {PointsModule} from "./points/points.module";
 import { AboutCompanyModule } from './about-company/about-company.module';
+import { EmailsModule } from './contacts/emails/emails.module';
+import { MapStateController } from './contacts/map-state/map-state.controller';
+import { MapStateService } from './contacts/map-state/map-state.service';
+import { MapStateModule } from './contacts/map-state/map-state.module';
+import { PhonesModule } from './contacts/phones/phones.module';
+import { ContactsModule } from "./contacts/contacts.module";
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
 @Module({
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MapStateController],
+  providers: [AppService, MapStateService],
   imports: [
       ConfigModule.forRoot({
         envFilePath,
@@ -30,7 +36,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       models: [MessengerModel, PointsModel],
       autoLoadModels: true,
     }),
-      MessengersModule, PointsModule, AboutCompanyModule
+      MessengersModule, PointsModule, ContactsModule, AboutCompanyModule
   ],
 })
 export class AppModule {}

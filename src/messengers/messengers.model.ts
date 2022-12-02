@@ -1,13 +1,8 @@
 import {Column, DataType, Model, Table} from "sequelize-typescript";
-
-interface IMessenger {
-  icon: string
-  messengerName: string
-  value: string
-}
+import { IMessengerModel } from "./interface/messengers.interface";
 
 @Table({tableName: "messengers"})
-export class MessengersModel extends Model<MessengersModel, IMessenger> {
+export class MessengerModel extends Model<MessengerModel, IMessengerModel> {
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
   id: number
 

@@ -5,7 +5,7 @@ import { phonesCreateDto } from "./dto/phones-create.dto";
 
 @Injectable()
 export class PhonesService {
-  constructor(@InjectModel(PhonesService) private phonesRepository: typeof PhonesModel) {}
+  constructor(@InjectModel(PhonesModel) private phonesRepository: typeof PhonesModel) {}
 
   async createPhones(dto: phonesCreateDto) {
     return await this.phonesRepository.create(dto);

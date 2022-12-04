@@ -3,6 +3,9 @@ import {IMapStateModel} from "./interface/map-state.interface";
 
 @Table({tableName: "map-state"})
 export class MapStateModel extends Model<MapStateModel, IMapStateModel> {
+  @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+  id: number
+
   @Column({type: DataType.FLOAT, allowNull: false})
   centerX: number
 

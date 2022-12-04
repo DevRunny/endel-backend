@@ -1,3 +1,3 @@
-export class PhonesCreateDto {
+export class CreatePhonesDto {
   readonly phoneNumber: string;
 }

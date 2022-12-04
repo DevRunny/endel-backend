@@ -2,21 +2,18 @@ import { Module } from '@nestjs/common';
 import { ContactsController } from './contacts.controller';
 import {SequelizeModule} from "@nestjs/sequelize";
 import { EmailsModule } from "./emails/emails.module";
-import { MapStateModule } from "./map-state/map-state.module";
 import { PhonesModule } from "./phones/phones.module";
 import {EmailModel} from "./emails/emails.model";
-import {PhonesModel} from "./phones/phones.model";
-import {MapStateModel} from "./map-state/map-state.model";
-import {MapStateService} from "./map-state/map-state.service";
+import {PhoneModel} from "./phones/phoneModel";
 import {PhonesService} from "./phones/phones.service";
 import {EmailsService} from "./emails/emails.service";
 
 @Module({
-  providers: [MapStateService, PhonesService, EmailsService],
+  providers: [PhonesService, EmailsService],
   controllers: [ContactsController],
   imports: [
-    SequelizeModule.forFeature([EmailModel, MapStateModel, PhonesModel]),
-    EmailsModule, MapStateModule, PhonesModule
+    SequelizeModule.forFeature([EmailModel, PhoneModel]),
+    EmailsModule, PhonesModule
   ]
 })
 export class ContactsModule {}

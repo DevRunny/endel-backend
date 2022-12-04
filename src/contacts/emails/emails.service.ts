@@ -1,8 +1,14 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/sequelize";
 import { EmailModel } from "./emails.model";
-import { EmailCreateDto } from "./dto/emails-create.dto";
-import { IEditEmailResponse, IEmail, IEmailModel, IGetAllEmailsResponse } from './interface/emails.interface';
+import { CreateEmailDto } from "./dto/emails-create.dto";
+import {
+  ICreateEmailResponse,
+  IEditEmailResponse,
+  IEmail,
+  IEmailModel,
+  IGetAllEmailsResponse
+} from './interface/emails.interface';
 import { EditEmailDto } from './dto/emails-edit.dto';
 import { DeleteEmailDto } from './dto/emails-delete.dto';
 
@@ -10,8 +16,14 @@ import { DeleteEmailDto } from './dto/emails-delete.dto';
 export class EmailsService {
   constructor(@InjectModel(EmailModel) private emailsRepository: typeof EmailModel) {}
 
-  async createEmails(dto: EmailCreateDto) {
-    return await this.emailsRepository.create(dto);
+  async createEmail(dto: CreateEmailDto): Promise<ICreateEmailResponse> {
+    const createdEmail = await this.emailsRepository.create(dto);
+    const response: ICreateEmailResponse = {
+      id: createdEmail.id,
+      email: createdEmail.email,
+      statusCode: HttpStatus.OK
+    }
+    return response;
   }
 
   public async getAllEmails(): Promise<IGetAllEmailsResponse> {

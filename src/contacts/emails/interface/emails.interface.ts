@@ -1,3 +1,5 @@
+import {HttpStatus} from "@nestjs/common";
+
 export interface IEmailModel {
   id: number;
   email: string;
@@ -10,3 +12,7 @@ export interface IGetAllEmailsResponse {
 };
 
 export type IEditEmailResponse = Pick<IEmail, 'email'>;
+
+export interface ICreateEmailResponse extends IEmail {
+  statusCode: HttpStatus;
+}

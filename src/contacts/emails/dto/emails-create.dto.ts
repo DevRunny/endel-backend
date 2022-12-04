@@ -1,3 +1,3 @@
-export class emailsCreateDto {
-  email: string;
+export class EmailsCreateDto {
+  readonly email: string;
 }

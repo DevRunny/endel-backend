@@ -1,19 +1,13 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { EmailsService } from "./emails.service";
-import { emailsCreateDto } from "./dto/emails-create.dto";
+import { EmailsCreateDto } from "./dto/emails-create.dto";
 
 @Controller('emails')
 export class EmailsController {
   constructor(private emailsService: EmailsService) {}
 
   @Post()
-  create(@Body() emailsDto: emailsCreateDto) {
+  create(@Body() emailsDto: EmailsCreateDto) {
     return this.emailsService.createEmails(emailsDto)
-  }
-
-
-  @Get()
-  getAll() {
-    return this.emailsService.getAllPoints()
   }
 }

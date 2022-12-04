@@ -1,11 +1,8 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
-
-interface IEmail {
-  email: string
-}
+import {IEmail, IEmailModel} from "./interface/emails.interface";
 
 @Table({tableName: "emails"})
-export class EmailsModel extends Model<EmailsModel, IEmail> {
+export class EmailsModel extends Model<EmailsModel, IEmailModel> {
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
   id: number
   

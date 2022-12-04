@@ -1,8 +1,5 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
-
-interface IPhone {
-  phoneNumber: string;
-}
+import {IPhone} from "./interface/phones.interface";
 
 @Table({tableName: "phones"})
 export class PhonesModel extends Model<PhonesModel, IPhone> {

@@ -9,16 +9,10 @@ import {PointModel} from "./points/points.model";
 import {MessengersModule} from "./messengers/messengers.module";
 import {PointsModule} from "./points/points.module";
 import { AboutCompanyModule } from './about-company/about-company.module';
-import { EmailsModule } from './contacts/emails/emails.module';
-import { MapStateController } from './contacts/map-state/map-state.controller';
-import { MapStateService } from './contacts/map-state/map-state.service';
-import { MapStateModule } from './contacts/map-state/map-state.module';
-import { PhonesModule } from './contacts/phones/phones.module';
 import { ContactsModule } from "./contacts/contacts.module";
-import {ContactsModel} from "./contacts/contacts.model";
 import {MapStateModel} from "./contacts/map-state/map-state.model";
 import {PhonesModel} from "./contacts/phones/phones.model";
-import {EmailsModel} from "./contacts/emails/emails.model";
+import {EmailModel} from "./contacts/emails/emails.model";
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -37,7 +31,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [MessengerModel, PointModel, MapStateModel, PhonesModel, EmailsModel],
+      models: [MessengerModel, PointModel, MapStateModel, PhonesModel, EmailModel],
       autoLoadModels: true,
     }),
       MessengersModule, PointsModule, ContactsModule, AboutCompanyModule

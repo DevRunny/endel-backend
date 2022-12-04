@@ -11,7 +11,7 @@ export class MessengersController {
   constructor(private messengersService: MessengersService) {}
 
   @Post('createMessenger')
-  createMessanger(@Body() messengerDto: CreateMessengerDto): Promise<MessengerModel> {
+  createMessenger(@Body() messengerDto: CreateMessengerDto): Promise<MessengerModel> {
     return this.messengersService.createMessenger(messengerDto);
   }
 

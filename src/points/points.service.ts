@@ -1,9 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {InjectModel} from "@nestjs/sequelize";
 import {PointModel} from "./points.model";
 import {pointsCreateDto} from "./dto/points-create.dto";
-import { IEditPointAddressResponse, IEditPointCoordinateResponse, IEditPointWorkingModeResponse, IPoint, IPointModel } from './interface/points.interface';
+import {
+  IDeletePointsResponse,
+  IEditPointAddressResponse,
+  IEditPointCoordinateResponse,
+  IEditPointWorkingModeResponse,
+  IPoint,
+  IPointModel
+} from './interface/points.interface';
 import { EditPointAddressDto, EditPointCoordinateDto, EditPointWorkingModeDto } from './dto/points-edit.dto';
+import {DeletePointsDto} from "./dto/points-delete.dto";
 
 @Injectable()
 export class PointsService {
@@ -58,6 +66,49 @@ export class PointsService {
     return response;
   }
 
+  public async deletePoints(dto: DeletePointsDto): Promise<IDeletePointsResponse> {
+    const allPointsModel = await this.pointsRepository.findAll();
+
+    if(dto.idPointsForDelete.length > 1) {
+      if(!this.checkIdForDeleteValid(dto.idPointsForDelete)) {
+        throw new HttpException('Нельзя удалить point c id = 1', HttpStatus.BAD_REQUEST);
+      }
+      const pointsForDelete = allPointsModel.filter((pointModel) => {
+        const pointIdForDelete: number = dto.idPointsForDelete.find((id: number) => pointModel.id === id);
+        return pointModel.id === pointIdForDelete;
+      })
+      await pointsForDelete.forEach((pointModel) => {
+        pointModel.destroy();
+      });
+      const response: IDeletePointsResponse = {
+        message: 'Success'
+      };
+      return response;
+    }
+
+    if(dto.idPointsForDelete.length === 1) {
+      if(dto.idPointsForDelete[0] === 1) {
+        throw new HttpException('Нельзя удалить point c id = 1', HttpStatus.BAD_REQUEST);
+      }
+      const pointForDelete = allPointsModel.find((pointModel) => pointModel.id === dto.idPointsForDelete[0])
+      await pointForDelete.destroy();
+      const response: IDeletePointsResponse = {
+        message: 'Success'
+      }
+      return response;
+    }
+  }
+
+  private checkIdForDeleteValid(ids: number[]): boolean {
+    let valid: boolean = true;
+    ids.forEach((id: number) => {
+      if(id === 1) {
+        valid = false;
+      }
+    })
+    return valid;
+  }
+
   private async getPointModelById(id: number): Promise<PointModel | null> {
     return await this.pointsRepository.findByPk(id);
   }
@@ -68,6 +119,7 @@ export class PointsService {
 
   private mapPointModelToPoint(model: IPointModel): IPoint {
     const point: IPoint = {
+      id: model.id,
       address: model.address,
       coordinateX: model.coordinateX,
       coordinateY: model.coordinateY,

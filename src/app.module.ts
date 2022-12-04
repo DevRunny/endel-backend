@@ -5,7 +5,7 @@ import {AppService} from "./app.service";
 import {AppController} from "./app.controller";
 import {MessengerModel} from "./messengers/messengers.model";
 import {getEnvPath} from "./common/helper/env.helper";
-import {PointsModel} from "./points/points.model";
+import {PointModel} from "./points/points.model";
 import {MessengersModule} from "./messengers/messengers.module";
 import {PointsModule} from "./points/points.module";
 import { AboutCompanyModule } from './about-company/about-company.module';
@@ -33,7 +33,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [MessengerModel, PointsModel],
+      models: [MessengerModel, PointModel],
       autoLoadModels: true,
     }),
       MessengersModule, PointsModule, ContactsModule, AboutCompanyModule

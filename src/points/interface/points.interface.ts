@@ -6,7 +6,11 @@ export interface IPointModel {
     workingMode: string;
 }
 
-export type IPoint = Omit<IPointModel, "id">;
+export interface IDeletePointsResponse {
+    message: string;
+}
+
+export interface IPoint extends IPointModel{}
 
 export type IEditPointAddressResponse = Pick<IPoint, "address">;
 

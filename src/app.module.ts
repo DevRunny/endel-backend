@@ -14,6 +14,8 @@ import {MapStateModel} from "./map-state/map-state.model";
 import {PhoneModel} from "./contacts/phones/phoneModel";
 import {EmailModel} from "./contacts/emails/emails.model";
 import {MapStateModule} from "./map-state/map-state.module";
+import { CategoryModule } from './categories/categories.module';
+import { CategoryModel } from './categories/category.model';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -32,10 +34,10 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [MessengerModel, PointModel, MapStateModel, PhoneModel, EmailModel],
+      models: [MessengerModel, PointModel, MapStateModel, PhoneModel, EmailModel, CategoryModel],
       autoLoadModels: true,
     }),
-      MessengersModule, PointsModule, ContactsModule, AboutCompanyModule, MapStateModule
+      MessengersModule, PointsModule, ContactsModule, AboutCompanyModule, MapStateModule, CategoryModule
   ],
 })
 export class AppModule {}

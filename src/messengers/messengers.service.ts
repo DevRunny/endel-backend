@@ -14,14 +14,14 @@ export class MessengersService {
       return await this.messengerRepository.findByPk(id);
     }
 
-    private mapMessangerModelToMessangerObj(models: MessengerModel[]): IMessenger[] {
-      const messangerObjects: IMessenger[] = models.map((messengerModel: MessengerModel) => ({
+    private mapMessengerModelToMessangerObj(models: MessengerModel[]): IMessenger[] {
+      const messengerObjects: IMessenger[] = models.map((messengerModel: MessengerModel) => ({
         messengerName: messengerModel.messengerName,
         icon: messengerModel.icon,
         value: messengerModel.value
       }))
 
-      return messangerObjects;
+      return messengerObjects;
     }
 
     public async createMessenger(dto: CreateMessengerDto): Promise<MessengerModel> {
@@ -29,8 +29,8 @@ export class MessengersService {
     }
 
     public async getAllMessengers(): Promise<IMessenger[]> {
-      const messangers = await this.messengerRepository.findAll();
-      const response: IMessenger[] = this.mapMessangerModelToMessangerObj(messangers);
+      const messengers = await this.messengerRepository.findAll();
+      const response: IMessenger[] = this.mapMessengerModelToMessangerObj(messengers);
       return response;
     }
 
@@ -52,7 +52,7 @@ export class MessengersService {
       await messenger.save();
 
       const response: IEditMessengerNameResponse = {
-        messangerName: messenger.messengerName
+        messengerName: messenger.messengerName
       };
 
       return response;

@@ -11,7 +11,7 @@ export interface IEditMessengerValueResponse {
 };
 
 export interface IEditMessengerNameResponse {
-    messangerName: string;
+    messengerName: string;
 };
 
 export interface IEditMessengerIconResponse {

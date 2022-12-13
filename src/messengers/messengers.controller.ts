@@ -1,10 +1,11 @@
-import {Body, Controller, Delete, Get, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Post, UseGuards} from '@nestjs/common';
 import {MessengersService} from "./messengers.service";
 import {CreateMessengerDto} from "./dto/messenger-create.dto";
 import { MessengerModel } from './messengers.model';
 import { IDeleteMessengerResponse, IEditMessengerIconResponse, IEditMessengerNameResponse, IEditMessengerValueResponse, IMessenger } from './interface/messengers.interface';
 import { EditMessengerIconDto, EditMessengerNameDto, EditMessengerValueDto } from './dto/messenger-edit.dto';
 import { DeleteMessengerDto } from './dto/messenger-delete.dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('messengers')
 export class MessengersController {
@@ -15,6 +16,7 @@ export class MessengersController {
     return this.messengersService.createMessenger(messengerDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('getAllMessengers')
   getAllMessengers(): Promise<IMessenger[]> {
     return this.messengersService.getAllMessengers();

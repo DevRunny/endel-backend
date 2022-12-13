@@ -18,6 +18,10 @@ import { CategoryModule } from './categories/categories.module';
 import { CategoryModel } from './categories/category.model';
 import { DocumentsModule } from './documents/documents.module';
 import { DocumentModel } from './documents/document.model';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { UserModel } from './user/user.model';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -36,7 +40,16 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [MessengerModel, PointModel, MapStateModel, PhoneModel, EmailModel, CategoryModel, DocumentModel],
+      models: [
+        MessengerModel,
+        PointModel,
+        MapStateModel,
+        PhoneModel,
+        EmailModel,
+        CategoryModel,
+        DocumentModel,
+        UserModel
+      ],
       autoLoadModels: true,
     }),
       MessengersModule, 
@@ -45,7 +58,9 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       AboutCompanyModule, 
       MapStateModule, 
       CategoryModule, 
-      DocumentsModule
+      DocumentsModule, 
+      AuthModule, 
+      UserModule
   ],
 })
 export class AppModule {}

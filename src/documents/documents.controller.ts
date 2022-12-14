@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Delete } from '@nestjs/common';
+import {Controller, Get, Post, Body, Delete, UseGuards} from '@nestjs/common';
 import { DocumentModel } from './document.model';
 import { DocumentsService } from './documents.service';
 import { CreateDocumentDto } from './dto/documents-create.dto';
 import { DeleteDocumentsDto } from './dto/documents-delete.dto';
 import { EditDocumentNameDto } from './dto/documents-edit.dto';
 import { IDeleteDocumentsResponse, IDocument, IEditDocumentNameResponse } from './interface/documents.interface';
+import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
+@UseGuards(JwtAuthGuard)
 @Controller('documents')
 export class DocumentsController {
     constructor(private documentsService: DocumentsService) {}

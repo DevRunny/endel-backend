@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, HttpException, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpException, Post, UseGuards} from '@nestjs/common';
 import { DeleteEmailDto } from './emails/dto/emails-delete.dto';
 import { EditEmailDto } from './emails/dto/emails-edit.dto';
 import { EmailsService } from './emails/emails.service';
@@ -9,7 +9,9 @@ import {EditPhoneDto} from "./phones/dto/phone-edit.dto";
 import {DeletePhoneDto} from "./phones/dto/phone-delete.dto";
 import {CreateEmailDto} from "./emails/dto/emails-create.dto";
 import {CreatePhonesDto} from "./phones/dto/create-phones.dto";
+import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
+@UseGuards(JwtAuthGuard)
 @Controller('contacts')
 export class ContactsController {
   constructor(private emailsService: EmailsService, private phonesService: PhonesService) {}

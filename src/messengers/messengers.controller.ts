@@ -7,6 +7,7 @@ import { EditMessengerIconDto, EditMessengerNameDto, EditMessengerValueDto } fro
 import { DeleteMessengerDto } from './dto/messenger-delete.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
+// @UseGuards(JwtAuthGuard)
 @Controller('messengers')
 export class MessengersController {
   constructor(private messengersService: MessengersService) {}
@@ -16,7 +17,6 @@ export class MessengersController {
     return this.messengersService.createMessenger(messengerDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getAllMessengers')
   getAllMessengers(): Promise<IMessenger[]> {
     return this.messengersService.getAllMessengers();

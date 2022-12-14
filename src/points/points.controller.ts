@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Post, UseGuards} from '@nestjs/common';
 import {PointsService} from "./points.service";
 import {pointsCreateDto} from "./dto/points-create.dto";
 import {
@@ -11,7 +11,9 @@ import {
 } from './interface/points.interface';
 import { EditPointAddressDto, EditPointCoordinateDto, EditPointWorkingModeDto } from './dto/points-edit.dto';
 import {DeletePointsDto} from "./dto/points-delete.dto";
+import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
+@UseGuards(JwtAuthGuard)
 @Controller('points')
 export class PointsController {
   constructor(private pointsService: PointsService) {}

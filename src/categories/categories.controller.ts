@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {Controller, Get, Post, Body, UseGuards} from '@nestjs/common';
 import { CategoryService } from './categories.service';
 import { CategoryModel } from './category.model';
 import { CreateCategoryDto } from './dto/category-create.dto';
 import { SelectCategoriesDto } from './dto/category-edit.dto';
 import { ICategory, ISelectCategoriesResponse } from './interface/accreditation.interface';
+import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
+// @UseGuards(JwtAuthGuard)
 @Controller('categories')
 export class CategoryController {
     constructor(private categoryService: CategoryService) {}

@@ -29,7 +29,8 @@ export class AuthService {
     private generateToken(user: UserModel): ILoginResponse {
         const tokenData: ILoginTokenData = { id: user.id, email: user.email, };
         const token: string = this.jwtService.sign(tokenData);
-        const response: ILoginResponse = {token};
+        const expiresIn = this.jwtService.decode(token)['exp'];
+        const response: ILoginResponse = {token, expiresIn};
         return response;
     }
 }

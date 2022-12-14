@@ -38,13 +38,13 @@ export class CategoryService {
     public async getAllCategories(): Promise<ICategory[]> {
         const categoriesModel: CategoryModel[] = await this.categoriesRepository.findAll();
         const response: ICategory[] = this.mapCategoriesModelToCategories(categoriesModel);
-        return response;
+        return response.sort((a,b) => a.id - b.id);
     }
 
     public async getSelectedCategories(): Promise<ICategory[]> {
         const allCategories = await this.getAllCategories();
         const response: ICategory[] = allCategories.filter((category: ICategory) => category.selected);
-        return response;
+        return response.sort((a, b) => a.id - b.id);
     }
 
     private async getCategoryById(id: number): Promise<CategoryModel> {

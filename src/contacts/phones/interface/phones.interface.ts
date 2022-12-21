@@ -13,9 +13,6 @@ export interface IGetAllPhonesResponse {
 
 export interface IEditPhoneResponse {
   phoneNumber: string;
-  statusCode: HttpStatus;
 };
 
-export interface ICreatePhoneResponse extends IPhone{
-  statusCode: HttpStatus;
-};
+export interface ICreatePhoneResponse extends IPhone{};

@@ -11,6 +11,7 @@ import {
 } from "./interface/phones.interface";
 import {EditPhoneDto} from "./dto/phone-edit.dto";
 import {DeletePhoneDto} from "./dto/phone-delete.dto";
+import {IEmail} from "../emails/interface/emails.interface";
 
 @Injectable()
 export class PhonesService {
@@ -21,18 +22,14 @@ export class PhonesService {
     const response: ICreatePhoneResponse = {
       id: createdPhone.id,
       phoneNumber: createdPhone.phoneNumber,
-      statusCode: HttpStatus.OK
     }
     return response;
   }
 
 
-  async getAllPhones(): Promise<IGetAllPhonesResponse> {
+  async getAllPhones(): Promise<IPhone[]> {
     const allPhonesModel = await this.phonesRepository.findAll();
-    const response: IGetAllPhonesResponse = {
-      phones: this.mapPhonesModelToPhones(allPhonesModel)
-    }
-
+    const response: IPhone[] = this.mapPhonesModelToPhones(allPhonesModel)
     return response;
   }
 
@@ -42,7 +39,6 @@ export class PhonesService {
     await phoneModel.save();
     const response: IEditPhoneResponse = {
       phoneNumber: phoneModel.phoneNumber,
-      statusCode: HttpStatus.OK
     }
     return response;
   }

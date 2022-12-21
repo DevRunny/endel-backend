@@ -21,16 +21,13 @@ export class EmailsService {
     const response: ICreateEmailResponse = {
       id: createdEmail.id,
       email: createdEmail.email,
-      statusCode: HttpStatus.OK
     }
     return response;
   }
 
-  public async getAllEmails(): Promise<IGetAllEmailsResponse> {
+  public async getAllEmails(): Promise<IEmail[]> {
     const allEmailsModel = await this.emailsRepository.findAll();
-    const response: IGetAllEmailsResponse = {
-        emails: this.mapEmailsModelToEmails(allEmailsModel)
-    }
+    const response: IEmail[] = this.mapEmailsModelToEmails(allEmailsModel)
     return response;
   }
 

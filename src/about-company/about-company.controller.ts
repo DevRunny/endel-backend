@@ -6,7 +6,7 @@ import { EditInnDto, EditNameCompanyDto, EditNumRegistryDto, EditOgrnDto } from 
 import { IEditInnResponse, IEditNameCompanyResponse, IEditNumRegistryResponse, IEditOgrnResponse, IGetAllInfoAboutCompanyResponse } from './interface/about-company.interface';
 import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('aboutCompany')
 export class AboutCompanyController {
     constructor(private aboutCompanyService: AboutCompanyService) {}

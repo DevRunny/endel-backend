@@ -13,6 +13,4 @@ export interface IGetAllEmailsResponse {
 
 export type IEditEmailResponse = Pick<IEmail, 'email'>;
 
-export interface ICreateEmailResponse extends IEmail {
-  statusCode: HttpStatus;
-}
+export interface ICreateEmailResponse extends IEmail {}

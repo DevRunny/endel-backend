@@ -2,8 +2,21 @@ import {Body, Controller, Get, Post, UseGuards} from '@nestjs/common';
 import { AboutCompanyModel } from './about-company.model';
 import { AboutCompanyService } from './about-company.service';
 import { CreateAboutCompanyDto } from './dto/create-about-company.dto';
-import { EditInnDto, EditNameCompanyDto, EditNumRegistryDto, EditOgrnDto } from './dto/edit-about-company.dto';
-import { IEditInnResponse, IEditNameCompanyResponse, IEditNumRegistryResponse, IEditOgrnResponse, IGetAllInfoAboutCompanyResponse } from './interface/about-company.interface';
+import {
+    EditInnDto,
+    EditNameCompanyDto,
+    EditNumRegistryDto,
+    EditOgrnDto,
+    ToggleOgrnipDto
+} from './dto/edit-about-company.dto';
+import {
+    IEditInnResponse,
+    IEditNameCompanyResponse,
+    IEditNumRegistryResponse,
+    IEditOgrnResponse,
+    IGetAllInfoAboutCompanyResponse,
+    IToggleOgrnip
+} from './interface/about-company.interface';
 import {JwtAuthGuard} from "../auth/guards/jwt-auth.guard";
 
 // @UseGuards(JwtAuthGuard)
@@ -29,6 +42,11 @@ export class AboutCompanyController {
     @Post('editOgrn')
     editOgrn(@Body() dto: EditOgrnDto): Promise<IEditOgrnResponse> {
         return this.aboutCompanyService.setOgrn(dto);
+    }
+
+    @Post('toggleOgrnip')
+    toggleOgrnip(@Body() dto: ToggleOgrnipDto): Promise<IToggleOgrnip> {
+        return this.aboutCompanyService.toggleOgrnip(dto);
     }
 
     @Post('editNumRegistry')

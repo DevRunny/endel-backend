@@ -3,4 +3,5 @@ export class CreateAboutCompanyDto {
     readonly inn: string;
     readonly ogrn: string;
     readonly numRegistry: string;
+    readonly isOgrnip: boolean;
 }

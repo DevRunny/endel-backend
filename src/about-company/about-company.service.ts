@@ -2,8 +2,21 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { AboutCompanyModel } from './about-company.model';
 import { CreateAboutCompanyDto } from './dto/create-about-company.dto';
-import { EditInnDto, EditNameCompanyDto, EditNumRegistryDto, EditOgrnDto } from './dto/edit-about-company.dto';
-import { IEditInnResponse, IEditNameCompanyResponse, IEditNumRegistryResponse, IEditOgrnResponse, IGetAllInfoAboutCompanyResponse } from './interface/about-company.interface';
+import {
+    EditInnDto,
+    EditNameCompanyDto,
+    EditNumRegistryDto,
+    EditOgrnDto,
+    ToggleOgrnipDto
+} from './dto/edit-about-company.dto';
+import {
+    IEditInnResponse,
+    IEditNameCompanyResponse,
+    IEditNumRegistryResponse,
+    IEditOgrnResponse,
+    IGetAllInfoAboutCompanyResponse,
+    IToggleOgrnip
+} from './interface/about-company.interface';
 
 @Injectable()
 export class AboutCompanyService {
@@ -49,6 +62,18 @@ export class AboutCompanyService {
         return response;
     }
 
+    public async toggleOgrnip(dto: ToggleOgrnipDto): Promise<IToggleOgrnip> {
+        const company: AboutCompanyModel = await this.aboutCompanyRepository.findByPk(1);
+        company.isOgrnip = dto.isOgrnip;
+        await company.save();
+
+        const response: IToggleOgrnip = {
+            isOgrnip: company.isOgrnip
+        }
+
+        return response;
+    }
+
     public async setNumRegistry(dto: EditNumRegistryDto): Promise<IEditNumRegistryResponse> {
         const company: AboutCompanyModel = await this.aboutCompanyRepository.findByPk(1);
         company.numRegistry = dto.numRegistry;
@@ -61,6 +86,8 @@ export class AboutCompanyService {
         return response;
     }
 
+    public async
+
     public async getAllInfoAboutCompany(): Promise<IGetAllInfoAboutCompanyResponse> {
         const aboutCompanyModel: AboutCompanyModel = await this.aboutCompanyRepository.findByPk(1);
         const aboutCompanyObj: IGetAllInfoAboutCompanyResponse = {
@@ -68,7 +95,8 @@ export class AboutCompanyService {
             requisites: {
                 inn: aboutCompanyModel.inn,
                 ogrn: aboutCompanyModel.ogrn,
-                numRegistry: aboutCompanyModel.numRegistry
+                numRegistry: aboutCompanyModel.numRegistry,
+                isOgrnip: aboutCompanyModel.isOgrnip
             }
         };
 

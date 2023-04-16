@@ -13,3 +13,7 @@ export class EditNumRegistryDto {
 export class EditNameCompanyDto {
     readonly nameCompany: string;
 }
+
+export class ToggleOgrnipDto {
+    readonly isOgrnip: boolean;
+}

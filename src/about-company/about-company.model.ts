@@ -17,4 +17,7 @@ export class AboutCompanyModel extends Model<AboutCompanyModel, IAboutCompanyMod
 
     @Column({type: DataType.STRING, unique: true})
     numRegistry: string;
+
+    @Column({type: DataType.BOOLEAN})
+    isOgrnip: boolean;
 }

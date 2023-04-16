@@ -7,6 +7,7 @@ interface IRequisites {
     inn: string;
     ogrn: string;
     numRegistry: string;
+    isOgrnip: boolean;
 };
 
 export interface IGetAllInfoAboutCompanyResponse extends IAboutCompanyModel {};
@@ -22,6 +23,10 @@ export interface IEditInnResponse {
 export interface IEditOgrnResponse {
     ogrn: string;
 };
+
+export interface IToggleOgrnip {
+    isOgrnip: boolean;
+}
 
 export interface IEditNumRegistryResponse {
     numRegistry: string;

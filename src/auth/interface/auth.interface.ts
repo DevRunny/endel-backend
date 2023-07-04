@@ -1,11 +1,11 @@
-import { IUserModel } from "src/user/interface/user.interface";
+import { IUserModel } from 'src/user/interface/user.interface';
 
 export interface ILoginResponse {
-    token: string;
-    expiresIn: number;
-};
+  token: string;
+  expiresIn: number;
+}
 
 export interface ILoginTokenData {
-    id: number;
-    email: string;
-}; 
+  id: number;
+  email: string;
+}

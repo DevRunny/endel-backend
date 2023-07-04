@@ -1,19 +1,19 @@
 export class EditInnDto {
-    readonly inn: string;
+  readonly inn: string;
 }
 
 export class EditOgrnDto {
-    readonly ogrn: string;
+  readonly ogrn: string;
 }
 
 export class EditNumRegistryDto {
-    readonly numRegistry: string;
+  readonly numRegistry: string;
 }
 
 export class EditNameCompanyDto {
-    readonly nameCompany: string;
+  readonly nameCompany: string;
 }
 
 export class ToggleOgrnipDto {
-    readonly isOgrnip: boolean;
+  readonly isOgrnip: boolean;
 }

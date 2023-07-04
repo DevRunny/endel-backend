@@ -1,33 +1,33 @@
 export interface IAboutCompanyModel {
-    nameCompany: string;
-    requisites: IRequisites
-};
+  nameCompany: string;
+  requisites: IRequisites;
+}
 
 interface IRequisites {
-    inn: string;
-    ogrn: string;
-    numRegistry: string;
-    isOgrnip: boolean;
-};
+  inn: string;
+  ogrn: string;
+  numRegistry: string;
+  isOgrnip: boolean;
+}
 
-export interface IGetAllInfoAboutCompanyResponse extends IAboutCompanyModel {};
+export type IGetAllInfoAboutCompanyResponse = IAboutCompanyModel;
 
 export interface IEditNameCompanyResponse {
-    nameCompany: string;
-};
+  nameCompany: string;
+}
 
 export interface IEditInnResponse {
-    inn: string;
-};
+  inn: string;
+}
 
 export interface IEditOgrnResponse {
-    ogrn: string;
-};
+  ogrn: string;
+}
 
 export interface IToggleOgrnip {
-    isOgrnip: boolean;
+  isOgrnip: boolean;
 }
 
 export interface IEditNumRegistryResponse {
-    numRegistry: string;
-};
+  numRegistry: string;
+}

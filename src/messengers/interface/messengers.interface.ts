@@ -1,28 +1,28 @@
 export interface IMessengerModel {
-    icon: string
-    messengerName: string
-    value: string
-};
+  icon: string;
+  messengerName: string;
+  value: string;
+}
 
-export interface IMessenger extends IMessengerModel {};
+export type IMessenger = IMessengerModel;
 
 export interface IEditMessengerValueResponse {
-    value: string;
-};
+  value: string;
+}
 
 export interface IEditMessengerNameResponse {
-    messengerName: string;
-};
+  messengerName: string;
+}
 
 export interface IEditMessengerIconResponse {
-    icon: string;
-};
+  icon: string;
+}
 
 export interface IDeleteMessengerResponse {
-    status: EDeleteMessengerStatus;
+  status: EDeleteMessengerStatus;
 }
 
 export enum EDeleteMessengerStatus {
-    SUCCESS = "success",
-    FAILED = "failed"
+  SUCCESS = 'success',
+  FAILED = 'failed',
 }

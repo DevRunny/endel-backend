@@ -1,18 +1,18 @@
-import {HttpStatus} from "@nestjs/common";
+import { HttpStatus } from '@nestjs/common';
 
 export interface IPhoneModel {
   id: number;
   phoneNumber: string;
-};
+}
 
-export interface IPhone extends IPhoneModel {};
+export type IPhone = IPhoneModel;
 
 export interface IGetAllPhonesResponse {
   phones: IPhone[];
-};
+}
 
 export interface IEditPhoneResponse {
   phoneNumber: string;
-};
+}
 
-export interface ICreatePhoneResponse extends IPhone{};
+export type ICreatePhoneResponse = IPhone;

@@ -4,9 +4,9 @@ export interface IMapStateModel {
   zoom: number;
 }
 
-export interface IMapState extends IMapStateModel {}
+export type IMapState = IMapStateModel;
 
-export interface IGetMapStateResponse extends IMapState {}
+export type IGetMapStateResponse = IMapState;
 
 export interface IEditMapStateCenterResponse {
   center: number[];

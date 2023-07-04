@@ -1,3 +1,3 @@
 export class DeleteDocumentsDto {
-    ids: number[];
+  ids: number[];
 }

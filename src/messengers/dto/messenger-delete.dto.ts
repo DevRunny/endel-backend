@@ -1,3 +1,3 @@
 export class DeleteMessengerDto {
-    readonly id: number;
+  readonly id: number;
 }

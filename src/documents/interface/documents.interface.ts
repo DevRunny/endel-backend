@@ -1,15 +1,15 @@
 export interface IDocumentModel {
-    id: number;
-    documentName: string;
-    urlDocument: string;
-};
+  id: number;
+  documentName: string;
+  urlDocument: string;
+}
 
-export interface IDocument extends IDocumentModel {};
+export type IDocument = IDocumentModel;
 
 export interface IDeleteDocumentsResponse {
-    documentName: string;
+  documentName: string;
 }
 
 export interface IEditDocumentNameResponse {
-    documentName: string;
+  documentName: string;
 }

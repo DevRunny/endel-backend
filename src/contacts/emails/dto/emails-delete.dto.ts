@@ -1,3 +1,3 @@
 export class DeleteEmailDto {
-    readonly id: number;
+  readonly id: number;
 }

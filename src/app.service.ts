@@ -11,7 +11,6 @@ export class AppService {
 
     console.log({ databaseName });
 
-    return "Hello World!";
+    return 'Hello World!';
   }
 }
-

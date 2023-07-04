@@ -1,3 +1,3 @@
 export class SelectCategoriesDto {
-    readonly ids: number[];
+  readonly ids: number[];
 }

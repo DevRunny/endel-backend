@@ -1,13 +1,13 @@
 export interface IAccreditationModel {
-    id: number;
-    categoryDescription: string;
-    categoryName: string;
-    urlImage: string;
-    selected: boolean;
-};
+  id: number;
+  categoryDescription: string;
+  categoryName: string;
+  urlImage: string;
+  selected: boolean;
+}
 
-export interface ICategory extends IAccreditationModel {};
+export type ICategory = IAccreditationModel;
 
 export interface ISelectCategoriesResponse {
-    id: number;
+  id: number;
 }

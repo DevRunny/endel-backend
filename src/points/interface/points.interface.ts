@@ -1,21 +1,21 @@
 export interface IPointModel {
-    id: number;
-    address: string;
-    coordinateX: number;
-    coordinateY: number;
-    workingMode: string;
+  id: number;
+  address: string;
+  coordinateX: number;
+  coordinateY: number;
+  workingMode: string;
 }
 
 export interface IDeletePointsResponse {
-    message: string;
+  message: string;
 }
 
-export interface IPoint extends IPointModel{}
+export type IPoint = IPointModel;
 
-export type IEditPointAddressResponse = Pick<IPoint, "address">;
+export type IEditPointAddressResponse = Pick<IPoint, 'address'>;
 
-export type IEditPointWorkingModeResponse = Pick<IPoint, "workingMode">;
+export type IEditPointWorkingModeResponse = Pick<IPoint, 'workingMode'>;
 
 export interface IEditPointCoordinateResponse {
-    coordinate: number[];
-};
+  coordinate: number[];
+}

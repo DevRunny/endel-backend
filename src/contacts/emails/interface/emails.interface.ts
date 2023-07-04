@@ -1,16 +1,16 @@
-import {HttpStatus} from "@nestjs/common";
+import { HttpStatus } from '@nestjs/common';
 
 export interface IEmailModel {
   id: number;
   email: string;
-};
+}
 
-export interface IEmail extends IEmailModel {};
+export type IEmail = IEmailModel;
 
 export interface IGetAllEmailsResponse {
   emails: IEmail[];
-};
+}
 
 export type IEditEmailResponse = Pick<IEmail, 'email'>;
 
-export interface ICreateEmailResponse extends IEmail {}
+export type ICreateEmailResponse = IEmail;

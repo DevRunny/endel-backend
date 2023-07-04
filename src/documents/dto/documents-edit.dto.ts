@@ -1,4 +1,4 @@
 export class EditDocumentNameDto {
-    readonly id: number;
-    readonly documentName: string;
+  readonly id: number;
+  readonly documentName: string;
 }

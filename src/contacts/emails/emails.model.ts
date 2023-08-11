@@ -1,5 +1,5 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
-import { IEmail, IEmailModel } from './interface/emails.interface';
+import { IEmailModel } from './interface/emails.interface';
 
 @Table({ tableName: 'emails' })
 export class EmailModel extends Model<EmailModel, IEmailModel> {

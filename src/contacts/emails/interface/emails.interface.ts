@@ -1,5 +1,3 @@
-import { HttpStatus } from '@nestjs/common';
-
 export interface IEmailModel {
   id: number;
   email: string;

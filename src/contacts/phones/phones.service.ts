@@ -5,13 +5,11 @@ import { CreatePhonesDto } from './dto/create-phones.dto';
 import {
   ICreatePhoneResponse,
   IEditPhoneResponse,
-  IGetAllPhonesResponse,
   IPhone,
   IPhoneModel,
 } from './interface/phones.interface';
 import { EditPhoneDto } from './dto/phone-edit.dto';
 import { DeletePhoneDto } from './dto/phone-delete.dto';
-import { IEmail } from '../emails/interface/emails.interface';
 
 @Injectable()
 export class PhonesService {

@@ -36,6 +36,7 @@ export class PointsController {
   editAddress(
     @Body() dto: EditPointAddressDto,
   ): Promise<IEditPointAddressResponse> {
+    console.log(dto);
     return this.pointsService.setPointAddress(dto);
   }
 
@@ -43,6 +44,7 @@ export class PointsController {
   editCoordinate(
     @Body() dto: EditPointCoordinateDto,
   ): Promise<IEditPointCoordinateResponse> {
+    console.log(dto);
     return this.pointsService.setPointCoordinate(dto);
   }
 

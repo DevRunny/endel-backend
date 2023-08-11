@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AboutCompanyModel } from './about-company.model';
 import { AboutCompanyService } from './about-company.service';
 import { CreateAboutCompanyDto } from './dto/create-about-company.dto';
@@ -17,7 +17,6 @@ import {
   IGetAllInfoAboutCompanyResponse,
   IToggleOgrnip,
 } from './interface/about-company.interface';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 // @UseGuards(JwtAuthGuard)
 @Controller('aboutCompany')

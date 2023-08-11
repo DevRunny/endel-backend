@@ -9,7 +9,8 @@ export type IMapState = IMapStateModel;
 export type IGetMapStateResponse = IMapState;
 
 export interface IEditMapStateCenterResponse {
-  center: number[];
+  centerX: number;
+  centerY: number;
 }
 
 export interface IEditMapStateZoomResponse {

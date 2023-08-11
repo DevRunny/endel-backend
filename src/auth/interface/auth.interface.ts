@@ -1,5 +1,3 @@
-import { IUserModel } from 'src/user/interface/user.interface';
-
 export interface ILoginResponse {
   token: string;
   expiresIn: number;

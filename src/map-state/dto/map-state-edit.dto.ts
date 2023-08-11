@@ -1,8 +1,8 @@
 export class EditMapStateCenterDto {
-  centerX: number;
-  centerY: number;
+  readonly centerX: number;
+  readonly centerY: number;
 }
 
 export class EditMapStateZoomDto {
-  zoom: number;
+  readonly zoom: number;
 }

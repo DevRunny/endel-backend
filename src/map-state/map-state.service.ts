@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { MapStateModel } from './map-state.model';
-import { MapStateCreateDto } from './dto/map-state-create.dto';
 import {
   IEditMapStateCenterResponse,
   IEditMapStateZoomResponse,
@@ -11,6 +10,7 @@ import {
   EditMapStateCenterDto,
   EditMapStateZoomDto,
 } from './dto/map-state-edit.dto';
+import { MapStateCreateDto } from './dto/map-state-create.dto';
 
 @Injectable()
 export class MapStateService {
@@ -23,12 +23,17 @@ export class MapStateService {
     const mapStateModel: MapStateModel = await this.mapStateRepository.findByPk(
       1,
     );
-    const response: IGetMapStateResponse = {
+    const mapStateObj: IGetMapStateResponse = {
       centerX: mapStateModel.centerX,
       centerY: mapStateModel.centerY,
       zoom: mapStateModel.zoom,
     };
-    return response;
+
+    return mapStateObj;
+  }
+
+  public async createMapState(dto: MapStateCreateDto): Promise<MapStateModel> {
+    return await this.mapStateRepository.create(dto);
   }
 
   public async setMapStateCenter(
@@ -37,12 +42,16 @@ export class MapStateService {
     const mapStateModel: MapStateModel = await this.mapStateRepository.findByPk(
       1,
     );
+    console.log(mapStateModel);
     mapStateModel.centerX = dto.centerX;
     mapStateModel.centerY = dto.centerY;
     await mapStateModel.save();
+
     const response: IEditMapStateCenterResponse = {
-      center: [mapStateModel.centerX, mapStateModel.centerY],
+      centerX: mapStateModel.centerX,
+      centerY: mapStateModel.centerY,
     };
+    console.log(response);
     return response;
   }
 

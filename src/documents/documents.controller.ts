@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Delete, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, UseGuards } from '@nestjs/common';
 import { DocumentModel } from './document.model';
 import { DocumentsService } from './documents.service';
 import { CreateDocumentDto } from './dto/documents-create.dto';

@@ -7,7 +7,6 @@ import {
   IEditEmailResponse,
   IEmail,
   IEmailModel,
-  IGetAllEmailsResponse,
 } from './interface/emails.interface';
 import { EditEmailDto } from './dto/emails-edit.dto';
 import { DeleteEmailDto } from './dto/emails-delete.dto';

@@ -21,7 +21,6 @@ import { DocumentModel } from './documents/document.model';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { UserModel } from './user/user.model';
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 

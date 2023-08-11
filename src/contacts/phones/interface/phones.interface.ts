@@ -1,5 +1,3 @@
-import { HttpStatus } from '@nestjs/common';
-
 export interface IPhoneModel {
   id: number;
   phoneNumber: string;

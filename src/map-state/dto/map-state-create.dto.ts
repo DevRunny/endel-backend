@@ -1,5 +1,5 @@
 export class MapStateCreateDto {
-  readonly centerX: number;
-  readonly centerY: number;
-  readonly zoom: number;
+  centerX: number;
+  centerY: number;
+  zoom: number;
 }
